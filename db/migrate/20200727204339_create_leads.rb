@@ -4,7 +4,7 @@ class CreateLeads < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :email
       t.string :phone
-      t.string :country
+      t.string :lead_type
 
       t.timestamps
     end
