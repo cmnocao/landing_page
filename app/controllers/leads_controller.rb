@@ -1,4 +1,10 @@
 class LeadsController < ApplicationController
+  before_action :authenticate_user!
+
+  def index
+    @leads = Lead.all
+  end
+
   def create
     @lead = Lead.new lead_params
     if @lead.save

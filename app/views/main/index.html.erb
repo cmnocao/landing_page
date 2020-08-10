@@ -1,13 +1,21 @@
-<h1>Sign up!</h1>
-<% if cookies[:saved_lead] %>
-  Thanks for signing up!
-<% else %>
-  <%= form_for @lead do |f| %>
-    <%= f.select :lead_type, ["Tutor", "Student"], prompt: "I'm a" %>
-    <%= f.text_field :name, placeholder: "Name" %>
-    <%= f.email_field :email, placeholder: "Email" %>
-    <%= f.phone_field :phone, placeholder: "Phone" %>
+<br><br><br>
 
-    <%= f.submit %>
+<div class="container">
+  <% if cookies[:saved_lead] %>
+    Thanks for signing up!
+  <% else %>
+    <%= bootstrap_form_for @lead do |l| %>
+
+      <div class="row">
+        <div class="col-md-3 offset-md-3"><%= l.radio_button :lead_type, 'Tutor' %></div>
+        <div class="col-md-3 "><%= l.radio_button :lead_type, 'Student' %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 offset-md-3"><%= l.text_field :name, required: true %></div>
+        <div class="col-md-6 offset-md-3"><%= l.email_field :email, required: true %></div>
+        <div class="col-md-6 offset-md-3"><%= l.phone_field :phone, required: false %></div>
+        <div class="col-md-6 offset-md-3"><%= l.submit "Sign up!"%></div>
+    </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
